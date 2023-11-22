@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+  body {
+    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+  }
+
+  form {
+    max-width: 400px;
+    margin: 60px auto 0; /* Agregado margen superior al formulario */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .center-heading {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-size: 14px;
+    color: #555555;
+    margin-bottom: 5px;
+    text-align: left;
+    display: block;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  button {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #0947e3;
+  }
+
+  p {
+    color: #e74c3c;
+    margin-top: 10px;
+  }
+</style>
+
+<form action="/signin/" method="POST">
+  {% csrf_token %}
+  
+  <h1 class="center-heading">Iniciar sesión</h1>
+
+  <p>{{ error }}</p>
+
+  <!-- Campo de nombre de usuario -->
+  <label for="{{ form.username.id_for_label }}">Usuario:</label>
+  {{ form.username }}
+  
+  <!-- Campo de contraseña -->
+  <label for="{{ form.password.id_for_label }}">Contraseña:</label>
+  {{ form.password }}
+  
+  <!-- Botón de iniciar sesión -->
+  <button>
+    Iniciar sesión
+  </button>
+</form>
+
+{% endblock %}

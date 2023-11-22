@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+  body {
+    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+  }
+
+  form {
+    max-width: 400px;
+    margin: 60px auto 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #a1c4e8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .center-heading {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-size: 14px;
+    color: #555555;
+    margin-bottom: 5px;
+    text-align: left; /* Cambiado la alineación del texto a la izquierda */
+    display: block;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  button {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #0947e3;
+  }
+
+  p {
+    color: #e74c3c;
+    margin-top: 10px;
+  }
+</style>
+
+<form action="/signup/" method="POST">
+  {% csrf_token %}
+
+  <h1 class="center-heading">Inscribirse</h1>
+
+  <p>{{ error }}</p>
+
+  <div class="form-group">
+    <label for="{{ form.username.id_for_label }}">Usuario:</label>
+    {{ form.username }}
+  </div>
+
+  <div class="form-group">
+    <label for="{{ form.password1.id_for_label }}">Contraseña:</label>
+    {{ form.password1 }}
+  </div>
+
+  <div class="form-group">
+    <label for="{{ form.password2.id_for_label }}">Confirmar Contraseña:</label>
+    {{ form.password2 }}
+  </div>
+
+  <!-- Agrega más campos según sea necesario -->
+
+  <button>Inscribirse</button>
+</form>
+
+{% endblock %}
